@@ -48,4 +48,3 @@ if __name__ == "__main__":
 
     result = sum(list(map(find_calibration_values_with_text, loader.load_per_line(p))))
     print(result)
-
