@@ -10,7 +10,7 @@ def load_per_line(file: Path, transform=str):
             yield transform(line.strip("\n"))
 
 
-def load_grid(file: Path) -> List[List[chr]]:
+def load_grid(file: Path) -> List[List[str]]:
     grid = []
     with file.open() as f:
         for line in f:
