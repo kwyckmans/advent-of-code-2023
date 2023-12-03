@@ -4,31 +4,12 @@ from pathlib import Path
 from typing import List, Tuple
 from aoc_utils import loader
 
-# def find_part_numbers(grid, gear_row_idx, gear_col_idx) -> Tuple[int, int]:
-#     no_numbers = 0
-#     for row in range(gear_row_idx - 1, gear_row_idx + 2):
-#         for col in range(gear_col_idx - 1, gear_col_idx + 2):
-#             if row >= 0 and row < len(grid) and col >= 0 and col < len(grid[0]) and (row != gear_row_idx and col != gear_col_idx):
-                
-
-
-# def surrounded_by_2_numbers(grid, gear_row_idx, gear_col_idx) -> bool:
-#     no_numbers = 0
-#     for row in range(gear_row_idx - 1, gear_row_idx + 2):
-#         for col in range(gear_col_idx - 1, gear_col_idx + 2):
-#             if row >= 0 and row < len(grid) and col >= 0 and col < len(grid[0]) and (row != gear_row_idx and col != gear_col_idx):
-#                 print(f"Checking if {row}, {col} is digit: {grid[row][col]}")
-#                 if grid[row][col].isdigit():
-#                     no_numbers += 1
-
-#     return no_numbers == 2 
-
 def compute_ratio(gears):
     total = 0
     for gear_location, numbers in gears.items():
         if len(numbers) == 2:
             total += reduce((lambda x, y: x * y), numbers)
-        
+      
     return total
 
 def gear_locations(grid: List[List[str]], no_row_idx: int, no_start_idx: int, no_end_idx: int) -> List[Tuple[int, int]]:
@@ -44,13 +25,9 @@ def gear_locations(grid: List[List[str]], no_row_idx: int, no_start_idx: int, no
     return gear_locations
 
 def solve_part_2(grid:List[List[str]]) -> int:
-    # Keep a hasmap of gear location to numbers. 
-    # If the list of numbers is exactly 2, do the calculation
-
     gears = defaultdict(list)
 
     row_idx, col_idx = 0,0 
-    total = 0
 
     while row_idx < len(grid):
         no_start_idx, no_end_idx = col_idx, col_idx + 1
@@ -91,8 +68,6 @@ def solve_part_1(grid: List[List[str]]) -> int:
     total = 0
 
     while row_idx < len(grid):
-        # print(grid[row_idx][col_idx], end=" ")
-
         no_start_idx, no_end_idx = col_idx, col_idx + 1
         
         if grid[row_idx][col_idx].isdigit():
