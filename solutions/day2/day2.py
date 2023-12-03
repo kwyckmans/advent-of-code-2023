@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from aoc_utils import loader
 
+
 @dataclass
 class GameData:
     id: int
@@ -9,17 +10,18 @@ class GameData:
     green: int = 1
     blue: int = 1
 
+
 def get_game_data(raw_input: str) -> GameData:
-    game_id = int(raw_input.split(':')[0].split(" ")[1])
+    game_id = int(raw_input.split(":")[0].split(" ")[1])
     # print(f"{raw_input} has id: {game_id}")
 
     red = 0
     blue = 0
     green = 0
 
-    plays = raw_input.split(':')[1].split(";")
+    plays = raw_input.split(":")[1].split(";")
     for play in plays:
-        for draw in play.split(','):
+        for draw in play.split(","):
             count = int(draw.lstrip().split(" ")[0])
             # print(f"draw {draw} has count {count}")
             if "red" in draw:
@@ -28,9 +30,10 @@ def get_game_data(raw_input: str) -> GameData:
                 blue = max(blue, count)
             elif "green" in draw:
                 green = max(green, count)
-            
+
     return GameData(game_id, red=red, blue=blue, green=green)
-                
+
+
 if __name__ == "__main__":
     p = Path(__file__).parent / "input.txt"
 

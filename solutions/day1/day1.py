@@ -10,12 +10,14 @@ digits = {
     "six": 6,
     "seven": 7,
     "eight": 8,
-    "nine": 9
+    "nine": 9,
 }
+
 
 def find_calibration_values(s: str) -> int:
     digits = [c for c in s if c.isdigit()]
     return int(digits[0] + digits[-1])
+
 
 def find_calibration_values_with_text(s: str) -> int:
     first_idx = 10000
@@ -34,16 +36,17 @@ def find_calibration_values_with_text(s: str) -> int:
         if idx > -1 and idx < first_idx:
             first_idx = idx
             lowest_digit = val
-        
-        if ridx != -1 and ridx  > last_idx:
-            last_idx = ridx 
+
+        if ridx != -1 and ridx > last_idx:
+            last_idx = ridx
             highest_digit = val
 
     return int(str(lowest_digit) + str(highest_digit))
 
+
 if __name__ == "__main__":
     p = Path(__file__).parent / "input.txt"
-    result = sum(list(map(find_calibration_values ,loader.load_per_line(p))))
+    result = sum(list(map(find_calibration_values, loader.load_per_line(p))))
     print(result)
 
     result = sum(list(map(find_calibration_values_with_text, loader.load_per_line(p))))
