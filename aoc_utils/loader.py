@@ -9,6 +9,19 @@ def load_per_line(file: Path, transform=str):
             #     yield transform()
             yield transform(line.strip("\n"))
 
+def load_per_newline_block(file: Path, transform=str):
+    with file.open() as f:
+        block = ""
+        for line in f:
+            if line == "\n":
+                yield block
+                block = ""
+            else:
+                block += line
+
+        yield block
+
+
 
 def load_grid(file: Path) -> List[List[str]]:
     grid = []

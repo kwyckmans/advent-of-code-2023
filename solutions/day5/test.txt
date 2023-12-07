@@ -1,0 +1,8 @@
+seeds: 79 14 55 13
+
+temperature-to-humidity map:
+4 11 10
+2 1 2
+
+humidity-to-location map:
+6 3 3
