@@ -136,6 +136,10 @@ def map_seed(seed: int) -> Tuple[int, int]:
             # We have an idx that didn't have a match in this mapping layer
             # We don't have to update our seed index, but we may need 
             # to reduce the amount of seeds we skip.
+            # 
+            # We do this by searching for the start index that's closest to the index
+            # we're currently looking at and comparing the distance with the currently 
+            # smallest stepsize.
             #
             # Say we have id 10, and the interval in this mapping level starts at 14,
             # all seed_ids between 10 and 14 will be larger.

@@ -21,7 +21,9 @@ def load_per_newline_block(file: Path, transform=str):
 
         yield block
 
-
+def load_all(file: Path):
+    with file.open() as f:
+        return f.readlines()
 
 def load_grid(file: Path) -> List[List[str]]:
     grid = []
